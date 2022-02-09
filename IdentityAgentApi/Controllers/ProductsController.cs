@@ -1,4 +1,5 @@
 ﻿using IdentityAgentApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,6 +15,7 @@ namespace IdentityAgentApi.Controllers
     {
 
         [HttpGet]
+        [Authorize(Policy = "UpdateOrCreateApi")]
         public IActionResult GetProducts()
         {
             var productList = new List<Product>

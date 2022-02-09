@@ -89,10 +89,18 @@ namespace IdentityServerAuth
                     ClientSecrets = new[]{new Secret("secret".Sha256())},
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     RedirectUris = new List<string>{"https://localhost:5002/signin-oidc"},
+                    PostLogoutRedirectUris = new List<string>{ "https://localhost:5002/signout-callback-oidc" },
                     AllowedScopes =  {
                         IdentityServerConstants.StandardScopes.Profile,
-                        IdentityServerConstants.StandardScopes.OpenId
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "agent_api.read"
                     },
+                    AccessTokenLifetime = DateTime.Now.AddDays(1).Second,
+                    AllowOfflineAccess = true,
+                    RefreshTokenUsage = TokenUsage.ReUse,
+                    RefreshTokenExpiration = TokenExpiration.Absolute,
+                    AbsoluteRefreshTokenLifetime = (int)(DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds
                 }
             };
         }

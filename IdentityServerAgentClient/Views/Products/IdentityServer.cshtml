@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "IdentityServer";
+}
+
+@using Microsoft.AspNetCore.Authentication;
+
+<table class="table table-borderless">
+    @foreach (var item in User.Claims)
+    {
+        <tr>
+            <td>@item.Type</td> 
+            <td>@item.Value</td>
+        </tr>
+    }
+</table>
+<hr />
+<hr />
+
+<table class="table table-borderless">
+    @foreach (var item in (await Context.AuthenticateAsync()).Properties.Items)
+    {
+        <tr>
+            <td>@item.Key</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+</table>
+

@@ -73,7 +73,7 @@ namespace IdentityAgentApi
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers().RequireAuthorization();
+                endpoints.MapControllers();
             });
         }
     }

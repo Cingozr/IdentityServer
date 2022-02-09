@@ -23,19 +23,27 @@ namespace IdentityServerAgentClient
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddControllersWithViews();
+
             services.AddAuthentication(options =>
             {
-                options.DefaultScheme = "Cino_Cookies";
+                options.DefaultScheme = "Cookies";
                 options.DefaultChallengeScheme = "oidc";
-            }).AddCookie("Cino_Cookies").AddOpenIdConnect("oidc", options =>
+            }).AddCookie("Cookies").AddOpenIdConnect("oidc", options =>
             {
-                options.SignInScheme = "Cino_Cookies";
+                options.SignInScheme = "Cookies";
                 options.Authority = "https://localhost:5001";
                 options.ClientId = "agent_mvc_client";
                 options.ClientSecret = "secret";
                 options.ResponseType = "code id_token";
+                options.GetClaimsFromUserInfoEndpoint = true;
+                options.SaveTokens = true;
+                options.Scope.Add("agent_api.read");
+                options.Scope.Add("profile");
+                options.Scope.Add("openid");
+                options.Scope.Add("offline_access");
             });
-            services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -55,12 +63,12 @@ namespace IdentityServerAgentClient
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseCookiePolicy();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Products}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}").RequireAuthorization();
             });
         }
     }
