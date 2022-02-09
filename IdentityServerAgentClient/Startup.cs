@@ -20,13 +20,24 @@ namespace IdentityServerAgentClient
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cino_Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            }).AddCookie("Cino_Cookies").AddOpenIdConnect("oidc", options =>
+            {
+                options.SignInScheme = "Cino_Cookies";
+                options.Authority = "https://localhost:5001";
+                options.ClientId = "Agent_MVC_Client";
+                options.ClientSecret = "secret";
+                options.ResponseType = "code id_token";
+            });
             services.AddControllersWithViews();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -36,7 +47,6 @@ namespace IdentityServerAgentClient
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
