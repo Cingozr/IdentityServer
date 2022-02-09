@@ -1,0 +1,17 @@
+Security
+---------------
+	IdentityServerAuth => https://localhost:5001
+
+
+Clients
+---------------
+	IdentityServerAgentClient => https://localhost:5002
+	IdentityServerUserClient  => https://localhost:5004
+
+Apis
+---------------
+	IdentityAgentApi => https://localhost:5006
+	IdentityUserApi  => https://localhost:5008
+
+
+
