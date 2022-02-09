@@ -5,25 +5,44 @@
 
 @using Microsoft.AspNetCore.Authentication;
 
-<table class="table table-borderless">
-    @foreach (var item in User.Claims)
-    {
+<table class="table table-bordered">
+    <thead>
         <tr>
-            <td>@item.Type</td> 
-            <td>@item.Value</td>
+            <th scope="col">Key</th>
+            <th scope="col">Value</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in User.Claims)
+        {
+            <tr>
+                <th>@item.Type</th>
+                <td>@item.Value</td>
+            </tr>
+        }
+
+    </tbody>
 </table>
-<hr />
+
 <hr />
 
-<table class="table table-borderless">
-    @foreach (var item in (await Context.AuthenticateAsync()).Properties.Items)
-    {
+
+<table class="table table-bordered">
+    <thead>
         <tr>
-            <td>@item.Key</td>
-            <td>@item.Value</td>
+            <th scope="col">Key</th>
+            <th scope="col">Value</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in (await Context.AuthenticateAsync()).Properties.Items)
+        {
+            <tr>
+                <th>@item.Key</th>
+                <td>@item.Value</td>
+            </tr>
+        }
+
+    </tbody>
 </table>
 

@@ -4,6 +4,7 @@ using IdentityServer4.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace IdentityServerAuth
@@ -44,7 +45,28 @@ namespace IdentityServerAuth
             return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new IdentityResources.Profile(),
+                new IdentityResource
+                {
+                    Name = "Country",
+                    DisplayName = "Country",
+                    Description = "Kullanicinin ulke bilgisi",
+                    UserClaims = new[]{"country"}
+                },
+                new IdentityResource
+                {
+                    Name = "City",
+                    DisplayName = "City",
+                    Description = "Kullanicinin sehir bilgisi",
+                    UserClaims = new[]{"city"}
+                },
+                new IdentityResource
+                {
+                    Name = "Birthdate",
+                    DisplayName = "Birthdate",
+                    Description = "Kullanicinin dogum tarihi bilgileri",
+                    UserClaims = new[]{ "birthdate" }
+                }
             };
         }
 
@@ -56,7 +78,15 @@ namespace IdentityServerAuth
                 {
                     SubjectId = Guid.NewGuid().ToString(),
                     Username = "Cingozr",
-                    Password = "9511"
+                    Password = "9511",
+                    Claims = new List<Claim>
+                    {
+                        new Claim("given_name","Recai"),
+                        new Claim("family_name","Cingoz"),
+                        new Claim("country","Turkiye"),
+                        new Claim("city","Istanbul"),
+                        new Claim("birthdate","12-12-1990"),
+                    }
                 }
             };
         }
@@ -94,13 +124,18 @@ namespace IdentityServerAuth
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.OfflineAccess,
-                        "agent_api.read"
+                        "agent_api.read",
+                        "Country",
+                        "City",
+                        "Birthdate"
+
                     },
                     AccessTokenLifetime = DateTime.Now.AddDays(1).Second,
                     AllowOfflineAccess = true,
                     RefreshTokenUsage = TokenUsage.ReUse,
                     RefreshTokenExpiration = TokenExpiration.Absolute,
-                    AbsoluteRefreshTokenLifetime = (int)(DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds
+                    AbsoluteRefreshTokenLifetime = (int)(DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds,
+                    RequireConsent = true
                 }
             };
         }

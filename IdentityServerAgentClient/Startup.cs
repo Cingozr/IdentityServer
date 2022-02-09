@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -42,6 +43,13 @@ namespace IdentityServerAgentClient
                 options.Scope.Add("profile");
                 options.Scope.Add("openid");
                 options.Scope.Add("offline_access");
+                options.Scope.Add("Country");
+                options.Scope.Add("City");
+                options.Scope.Add("Birthdate");
+
+                options.ClaimActions.MapUniqueJsonKey("country", "country");
+                options.ClaimActions.MapUniqueJsonKey("city", "city");
+                options.ClaimActions.MapUniqueJsonKey("birthdate", "birthdate");
             });
             services.AddHttpContextAccessor();
         }
