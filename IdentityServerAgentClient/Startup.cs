@@ -31,7 +31,7 @@ namespace IdentityServerAgentClient
             {
                 options.SignInScheme = "Cino_Cookies";
                 options.Authority = "https://localhost:5001";
-                options.ClientId = "Agent_MVC_Client";
+                options.ClientId = "agent_mvc_client";
                 options.ClientSecret = "secret";
                 options.ResponseType = "code id_token";
             });
@@ -53,14 +53,14 @@ namespace IdentityServerAgentClient
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Products}/{action=Index}/{id?}");
             });
         }
     }

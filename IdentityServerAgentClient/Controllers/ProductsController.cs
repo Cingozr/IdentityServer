@@ -1,4 +1,5 @@
 ﻿using IdentityModel.Client;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace IdentityServerAgentClient.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly IConfiguration _configuration;
