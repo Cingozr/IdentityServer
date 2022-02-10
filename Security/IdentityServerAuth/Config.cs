@@ -136,6 +136,25 @@ namespace IdentityServerAuth
                     RefreshTokenExpiration = TokenExpiration.Absolute,
                     AbsoluteRefreshTokenLifetime = (int)(DateTime.Now.AddDays(60)- DateTime.Now).TotalSeconds,
                     RequireConsent = true
+                },
+                new Client
+                {
+                    ClientId = "angular_client",
+                    ClientName = "AngularClient Uygulamasi",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = true,
+                    RequireClientSecret = false,
+                    RedirectUris = new List<string>{"https://localhost:4200"},
+                    PostLogoutRedirectUris = new List<string>{ "https://localhost:4200" },
+                    AllowedCorsOrigins = { "https://localhost:4200" },
+                    AllowedScopes =  {
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Email,
+                    },
+                    AccessTokenLifetime = 1,
+                    AllowAccessTokensViaBrowser= true,
+                    RequireConsent = false
                 }
             };
         }

@@ -5,19 +5,19 @@ VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{62D189E1-C1CF-48D5-905D-FF58130A5DB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityUserApi", "IdentityUserApi\IdentityUserApi.csproj", "{0E48B0C4-FF87-4FD0-A32A-FBB79180FD7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityUserApi", "Apis\IdentityUserApi\IdentityUserApi.csproj", "{0E48B0C4-FF87-4FD0-A32A-FBB79180FD7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityAgentApi", "IdentityAgentApi\IdentityAgentApi.csproj", "{CBF8DEC0-8EFD-4556-9BB5-6EF8E66F741F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityAgentApi", "Apis\IdentityAgentApi\IdentityAgentApi.csproj", "{CBF8DEC0-8EFD-4556-9BB5-6EF8E66F741F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{60E6E046-0B5F-4E8B-AFBB-F13C0919E3C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerAuth", "IdentityServerAuth\IdentityServerAuth.csproj", "{268D2AB9-1C91-42F3-9B98-8E2E2D2E610B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerAuth", "Security\IdentityServerAuth\IdentityServerAuth.csproj", "{268D2AB9-1C91-42F3-9B98-8E2E2D2E610B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{8F5B0BA1-D15D-4F21-9268-E05A33BB04F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerUserClient", "IdentityServerUserClient\IdentityServerUserClient.csproj", "{3EF1C7C2-C76E-40E9-B756-37CAEC5DCF0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerUserClient", "Clients\IdentityServerUserClient\IdentityServerUserClient.csproj", "{3EF1C7C2-C76E-40E9-B756-37CAEC5DCF0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerAgentClient", "IdentityServerAgentClient\IdentityServerAgentClient.csproj", "{9073F7CC-239F-4E6F-9FCA-48524B928503}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerAgentClient", "Clients\IdentityServerAgentClient\IdentityServerAgentClient.csproj", "{9073F7CC-239F-4E6F-9FCA-48524B928503}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3055A9C1-23C1-4F76-A439-04B26FDEE5CC}"
 	ProjectSection(SolutionItems) = preProject
